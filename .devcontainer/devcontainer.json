@@ -21,6 +21,7 @@
         "ionutvmi.path-autocomplete",
         "chrmarti.regex",
         "humao.rest-client",
+        "jebbs.plantuml",
         "lkytal.flatui",
         "pkief.material-icon-theme"
     ]

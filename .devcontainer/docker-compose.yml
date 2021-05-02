@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  python:
+    container_name: python
+    build:
+      context: ./docker/python
+      dockerfile: Dockerfile
+    volumes:
+      - ../:/workspace:cached
+    tty: true
+#   plantuml-server:
+#     image: plantuml/plantuml-server
+#     restart: always
+#     ports:
+#       - "8080:8080"

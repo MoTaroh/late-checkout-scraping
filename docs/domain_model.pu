@@ -1,0 +1,46 @@
+@startuml Scraping
+
+package スクレイピング集約 {
+    object スクレイピング {
+        URL
+        HTML
+        class名
+        ホテル情報
+    }
+    object URL {
+        ベースURL
+        地域コード
+        宿泊日
+        料金上限
+        ・・・
+    }
+    object 検索条件 {
+        都道府県
+        宿泊日
+        料金上限
+    }
+}
+
+スクレイピング "1" -down-* "1" URL
+URL "1" -down-* "1" 検索条件
+
+package ホテル集約 {
+    object ホテル {
+        ホテル名
+        住所
+        ホテル画像
+        プラン
+    }
+    object プラン {
+        プラン名
+        ホテル名
+        料金
+        チェックイン時間
+        チェックアウト時間
+    }
+}
+
+ホテル "1" -down-* "N" プラン
+スクレイピング "1" -right-> "N" ホテル
+
+@enduml

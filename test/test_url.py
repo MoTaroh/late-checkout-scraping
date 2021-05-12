@@ -3,7 +3,7 @@ import pytest
 from src.url import Url
 
 
-def test_generate_url():
-    urlclass = Url()
-    url = urlclass.url
-    assert type(url) is str
+def test_url_is_str():
+    url = Url()
+    search_url = url.search_url
+    assert type(search_url) is str

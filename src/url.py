@@ -1,3 +1,3 @@
 class Url:
     def __init__(self):
-        self.url = "https://hogehoge"
+        self.search_url = "https://hogehoge"

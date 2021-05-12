@@ -6,6 +6,7 @@ authors = ["MoTaroh <52590586+MoTaroh@users.noreply.github.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+pytest = "^6.2.4"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.3"

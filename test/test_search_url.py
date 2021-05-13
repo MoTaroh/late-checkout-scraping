@@ -1,12 +1,12 @@
 import pytest
 
-from src.url import Url
+from src.search_url import SearchUrl
 
 
 @pytest.fixture()
 def url():
     query = "hello"
-    url = Url(query)
+    url = SearchUrl(query)
     yield url
 
 

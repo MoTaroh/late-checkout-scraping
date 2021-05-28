@@ -5,13 +5,15 @@ from src.stay_date import StayDate
 
 
 def test_query_parameter_is_str():
-    qp = QueryParam()
+    staydate = StayDate()
+    qp = QueryParam(staydate)
     query_param = qp.query_param
     assert type(query_param) is str
 
 
 def test_empty_query_param():
-    qp = QueryParam()
+    staydate = StayDate()
+    qp = QueryParam(staydate)
     query_param = qp.query_param
     assert (
         query_param
@@ -19,13 +21,8 @@ def test_empty_query_param():
     )
 
 
-def test_query_param_20210520():
-    qp = QueryParam(year=2021, month=5, date=20)
+def test_query_param_20220520():
+    staydate = StayDate(stayYear=2022, stayMonth=5, stayDay=20)
+    qp = QueryParam(staydate=staydate)
     query_param = qp.query_param
-    assert "stayYear=2021&stayMonth=5&stayDay=20" in query_param
-
-
-def test_query_param_20200101():
-    qp = QueryParam(year=2020, month=1, date=1)
-    query_param = qp.query_param
-    assert "stayYear=2020&stayMonth=1&stayDay=1" in query_param
+    assert "stayYear=2022&stayMonth=5&stayDay=20" in query_param

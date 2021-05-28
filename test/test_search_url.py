@@ -1,11 +1,14 @@
 import pytest
 
 from src.search_url import SearchUrl
+from src.query_param import QueryParam
+from src.stay_date import StayDate
 
 
 @pytest.fixture()
 def url():
-    query = "hello"
+    staydate = StayDate()
+    query = QueryParam(staydate)
     url = SearchUrl(query)
     yield url
 
@@ -21,7 +24,9 @@ def test_base_url(url):
 
 
 def test_constructer(url):
-    arg = "hello"
+    staydate = StayDate()
+    query = QueryParam(staydate)
+    query_param = query.query_param
     # 期待値
-    expected_url = url.base_url + arg
+    expected_url = url.base_url + query_param
     assert url.search_url == expected_url

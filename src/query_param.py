@@ -1,8 +1,8 @@
 class QueryParam:
-    def __init__(self, year="", month="", date=""):
-        self._stayYear = year
-        self._stayMonth = month
-        self._stayDay = date
+    def __init__(self, staydate):
+        self._stayYear = staydate.stayYear
+        self._stayMonth = staydate.stayMonth
+        self._stayDay = staydate.stayDay
         self._stayCount = "1"
         self._roomCount = "1"
         self._adultNum = "2"
@@ -18,5 +18,5 @@ class QueryParam:
         self._kenCd = ""
         self._lrgCd = ""
         self._mvTabFlg = "2"
-
+        # クエリパラメータ
         self.query_param = f"?screenId={self._screenId}&distCd={self._distCd}&photo={self._photo}&activeSort={self._activeSort}&rootCd={self._rootCd}&stayYear={self._stayYear}&stayMonth={self._stayMonth}&stayDay={self._stayDay}&stayCount={self._stayCount}&roomCount={self._roomCount}&adultNum={self._adultNum}&minPrice={self._minPrice}&maxPrice={self._maxPrice}&roomCrack={self._roomCrack}&kenCd={self._kenCd}&lrgCd={self._lrgCd}&mvTabFlg={self._mvTabFlg}"

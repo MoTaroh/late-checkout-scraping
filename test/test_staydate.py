@@ -13,3 +13,10 @@ def test_staydate():
 def test_staydate_is_outdated():
     with pytest.raises(ValueError):
         staydate = StayDate(stayYear=1990, stayMonth=5, stayDay=20)
+
+
+def test_staydate_is_empty():
+    staydate = StayDate()
+    assert staydate.stayYear == ""
+    assert staydate.stayMonth == ""
+    assert staydate.stayDay == ""

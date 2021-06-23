@@ -6,33 +6,28 @@ from src.stay_date import StayDate
 from src.search_prefecture import SearchPrefecture
 
 
-@pytest.fixture()
-def url():
-    staydate = StayDate()
-    pref = SearchPrefecture("大阪")
-    up = UrlParam(staydate, pref)
-    url = SearchUrl(up)
-    yield url
+class TestSearchUrl:
+    def setup_method(self, method):
+        self.staydate = StayDate()
+        self.pref = SearchPrefecture("大阪")
+        self.up = UrlParam(self.staydate, self.pref)
+        self.url = SearchUrl(self.up)
 
+    def test_url_is_list(self):
+        search_url = self.url.search_url
+        assert type(search_url) is list
 
-def test_url_is_list(url):
-    search_url = url.search_url
-    assert type(search_url) is list
+    def test_base_url(self):
+        base_url = self.url.base_url
+        assert base_url == "https://www.jalan.net/"
 
+    def test_url_contains_osaka111(self):
+        for each_url in self.url.search_url:
+            assert "osaka111" in each_url
 
-def test_base_url(url):
-    base_url = url.base_url
-    assert base_url == "https://www.jalan.net/"
-
-
-def test_url_contains_osaka111(url):
-    for each_url in url.search_url:
-        assert "osaka111" in each_url
-
-
-def test_url_contains_regioncode(url):
-    region_code = "region_code_1"
-    assert region_code in url.search_url[0]
+    def test_url_contains_regioncode(self):
+        region_code = "region_code_1"
+        assert region_code in self.url.search_url[0]
 
 
 # def test_constructer(url):

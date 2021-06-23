@@ -11,11 +11,23 @@ from src.search_prefecture import SearchPrefecture
 #     assert type(up.path_param) is str
 
 
-def test_url_param_is_list():
-    staydate = StayDate()
-    pref = SearchPrefecture("大阪")
-    up = UrlParam(staydate, pref)
-    assert type(up.url_param) is list
+class TestUrlParam:
+    def setup_method(self, method):
+        self.staydate = StayDate()
+        self.pref = SearchPrefecture("大阪")
+        self.up = UrlParam(self.staydate, self.pref)
+
+    def test_url_param_is_list(self):
+        assert type(self.up.url_param) is list
+
+    def test_大阪のパラメータ内の地域コード(self):
+        assert "270000/LRG_271400/" in self.up.url_param[0]
+        assert "270000/LRG_271700/" in self.up.url_param[1]
+        assert "270000/LRG_272000/" in self.up.url_param[2]
+        assert "270000/LRG_272300/" in self.up.url_param[3]
+        assert "270000/LRG_272600/" in self.up.url_param[4]
+        assert "270000/LRG_272900/" in self.up.url_param[5]
+        assert "270000/LRG_273200/" in self.up.url_param[6]
 
 
 # def test_url_param_contains_path_query():

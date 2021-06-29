@@ -10,7 +10,8 @@ class UrlParam:
         self._maxPrice = ""
 
         self._kenCd = prefecture.prefecture_code  # 都道府県コード
-        self._lrgCd = prefecture.region_code  # 地域コード
+        self.region = prefecture.region  # 都道府県内の地域リスト
+        # self._lrgCd = prefecture.region  # 地域コード
         # 用途不明の固定値
         self._screenId = "UWW1402"
         self._distCd = "01"
@@ -21,8 +22,9 @@ class UrlParam:
         self._mvTabFlg = "2"
 
         self.url_param = []
-        for region_code in self._lrgCd:
-            path_param = f"{self._kenCd}/LRG_{region_code}/"
-            query_param = f"?screenId={self._screenId}&distCd={self._distCd}&photo={self._photo}&activeSort={self._activeSort}&rootCd={self._rootCd}&stayYear={self._stayYear}&stayMonth={self._stayMonth}&stayDay={self._stayDay}&stayCount={self._stayCount}&roomCount={self._roomCount}&adultNum={self._adultNum}&minPrice={self._minPrice}&maxPrice={self._maxPrice}&roomCrack={self._roomCrack}&kenCd={self._kenCd}&lrgCd={region_code}&mvTabFlg={self._mvTabFlg}"
+        for region in self.region:
+            _lrgCd = region["region_code"]
+            path_param = f"{self._kenCd}/LRG_{_lrgCd}/"
+            query_param = f"?screenId={self._screenId}&distCd={self._distCd}&photo={self._photo}&activeSort={self._activeSort}&rootCd={self._rootCd}&stayYear={self._stayYear}&stayMonth={self._stayMonth}&stayDay={self._stayDay}&stayCount={self._stayCount}&roomCount={self._roomCount}&adultNum={self._adultNum}&minPrice={self._minPrice}&maxPrice={self._maxPrice}&roomCrack={self._roomCrack}&kenCd={self._kenCd}&lrgCd={_lrgCd}&mvTabFlg={self._mvTabFlg}"
             url_param = path_param + query_param
             self.url_param.append(url_param)

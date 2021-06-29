@@ -21,14 +21,6 @@ class TestSearchUrl:
         base_url = self.url.base_url
         assert base_url == "https://www.jalan.net/"
 
-    def test_url_contains_osaka111(self):
-        for each_url in self.url.search_url:
-            assert "osaka111" in each_url
-
-    def test_url_contains_regioncode(self):
-        region_code = "region_code_1"
-        assert region_code in self.url.search_url[0]
-
 
 # def test_constructer(url):
 #     staydate = StayDate()

@@ -4,13 +4,15 @@ from src.search_url import SearchUrl
 from src.url_param import UrlParam
 from src.stay_date import StayDate
 from src.search_prefecture import SearchPrefecture
+from src.stay_price import Price
 
 
 class TestSearchUrl:
     def setup_method(self, method):
         self.staydate = StayDate()
         self.pref = SearchPrefecture("大阪")
-        self.up = UrlParam(self.staydate, self.pref)
+        self.price = Price(minPrice=0, maxPrice=10000)
+        self.up = UrlParam(self.staydate, self.pref, self.price)
         self.url = SearchUrl(self.up)
 
     def test_url_is_list(self):

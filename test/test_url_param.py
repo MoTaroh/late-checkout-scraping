@@ -3,7 +3,7 @@ import pytest
 from src.url_param import UrlParam
 from src.stay_date import StayDate
 from src.search_prefecture import SearchPrefecture
-
+from src.stay_price import Price
 
 # def test_path_param_is_str():
 #     staydate = StayDate()
@@ -15,7 +15,8 @@ class TestUrlParam:
     def setup_method(self, method):
         self.staydate = StayDate()
         self.pref = SearchPrefecture("大阪")
-        self.up = UrlParam(self.staydate, self.pref)
+        self.price = Price(minPrice=0, maxPrice=10000)
+        self.up = UrlParam(self.staydate, self.pref, self.price)
 
     def test_url_param_is_list(self):
         assert type(self.up.url_param) is list
@@ -28,6 +29,9 @@ class TestUrlParam:
         assert "270000/LRG_272600/" in self.up.url_param[4]
         assert "270000/LRG_272900/" in self.up.url_param[5]
         assert "270000/LRG_273200/" in self.up.url_param[6]
+
+    def test_最大料金10000(self):
+        assert "maxPrice=10000" in self.up.url_param[0]
 
 
 # def test_url_param_contains_path_query():

@@ -1,13 +1,13 @@
 class UrlParam:
-    def __init__(self, staydate, prefecture):  # TODO: 都道府県インスタンスを受け取る
+    def __init__(self, staydate, prefecture, price):  # TODO: 都道府県インスタンスを受け取る
         self._stayYear = staydate.stayYear
         self._stayMonth = staydate.stayMonth
         self._stayDay = staydate.stayDay
         self._stayCount = "1"
         self._roomCount = "1"
         self._adultNum = "2"
-        self._minPrice = "0"
-        self._maxPrice = ""
+        self._minPrice = price.minPrice
+        self._maxPrice = price.maxPrice
 
         self._kenCd = prefecture.prefecture_code  # 都道府県コード
         self.region = prefecture.region  # 都道府県内の地域リスト

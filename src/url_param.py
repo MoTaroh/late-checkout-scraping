@@ -1,5 +1,5 @@
 class UrlParam:
-    def __init__(self, staydate, prefecture, price):  # TODO: 都道府県インスタンスを受け取る
+    def __init__(self, staydate, prefecture, price):
         self._stayYear = staydate.stayYear
         self._stayMonth = staydate.stayMonth
         self._stayDay = staydate.stayDay
